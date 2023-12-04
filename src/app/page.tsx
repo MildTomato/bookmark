@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Search } from "lucide-react";
 import Image from "next/image";
-import { Websites } from "./websites";
+import { Websites } from "./Bookmarks";
 
 export default function Home() {
   return (

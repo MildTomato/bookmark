@@ -58,17 +58,21 @@ async function Websites() {
             className="group border-b last:border-b-0 flex items-center py-2 gap-6 justify-between"
           >
             <div className="flex items-center gap-4">
-              <figure className="w-6 h-6 relative bg-black/10 border border-black/10 rounded flex items-center justify-center">
-                <Globe className="w-4 text" />
+              <figure className="w-6 h-6 relative bg-black/[2%] group-hover:bg-black/[5%] border border-black/10 rounded-lg flex items-center justify-center">
+                <Globe className="w-4 text" strokeWidth={1} />
               </figure>
-              <a href={website.url} className="text-sm">
-                <span>{website.name}</span>
-              </a>
+
               <a href={website.url} className="font-mono text-sm">
                 <span>{website.url}</span>
               </a>
 
-              <p className="text-sm truncate">{website.description}</p>
+              <a href={website.url} className="text-sm">
+                <span>{website.name}</span>
+              </a>
+
+              <p className="text-sm truncate  text-muted-foreground">
+                {website.description}
+              </p>
             </div>
             <Button
               variant={"link"}
