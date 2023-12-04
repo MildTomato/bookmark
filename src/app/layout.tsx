@@ -7,7 +7,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navigation } from "./Navigation";
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
