@@ -6,51 +6,39 @@ async function Websites() {
   const websites = [
     {
       id: 1,
-      name: "Google",
-      url: "https://google.com",
+      name: "Vercel",
+      url: "https://vercel.com",
       description: "Search engine",
     },
     {
       id: 2,
-      name: "Twitter",
+      name: "NextJS",
       url: "https://twitter.com",
       description: "Social media",
     },
     {
       id: 3,
-      name: "Facebook",
+      name: "Supabase",
       url: "https://facebook.com",
       description: "Social media",
     },
     {
       id: 4,
-      name: "Instagram",
+      name: "React",
       url: "https://instagram.com",
       description: "Social media",
     },
     {
       id: 5,
-      name: "YouTube",
+      name: "TailwindCSS",
       url: "https://youtube.com",
       description: "Video sharing",
     },
     {
       id: 6,
-      name: "Twitch",
+      name: "ui.shadcn",
       url: "https://twitch.tv",
       description: "Video streaming",
-    },
-    {
-      id: 7,
-      name: "Reddit",
-      url: "https://reddit.com",
-      description: "Social news aggregation",
-    },
-    {
-      id: 8,
-      name: "GitHub",
-      url: "https://github.com",
-      description: "Code hosting",
     },
   ];
 
