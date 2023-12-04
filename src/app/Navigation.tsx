@@ -12,7 +12,7 @@ import {
 async function Navigation() {
   return (
     <nav role="navigation" className="border-b">
-      <div className="max-w-[1200px] mx-auto py-2 flex gap-3 items-center">
+      <div className="max-w-site mx-auto py-2 flex gap-3 items-center px-site">
         <figure role="img" aria-label="Logo" className="">
           <svg
             xmlns="http://www.w3.org/2000/svg"

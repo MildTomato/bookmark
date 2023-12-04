@@ -19,6 +19,15 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      width: {
+        site: "var(--site-width)",
+      },
+      padding: {
+        site: "var(--site-padding)",
+      },
+      maxWidth: {
+        site: "var(--site-width)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

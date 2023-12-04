@@ -31,7 +31,9 @@ export default function RootLayout({
         )}
       >
         <Navigation />
-        {children}
+        <main role="main" className="py-12">
+          {children}
+        </main>
       </body>
     </html>
   );
