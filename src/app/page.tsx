@@ -19,16 +19,7 @@ export default function Home() {
           />
         </Label>
         <div className="h-[2rem] w-px bg-border"></div>
-        <form className="flex flex-row gap-2 shrink">
-          {/* <Label>
-            <Input
-              name="url"
-              placeholder="Add a new website address"
-              type="url"
-            />
-          </Label> */}
-          <Button variant={"outline"}>New Bookmark</Button>
-        </form>
+        <Button variant={"outline"}>New Bookmark</Button>
       </div>
       <div className="py-4">
         <Websites />
