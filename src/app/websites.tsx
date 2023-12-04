@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Laptop2, Trash2 } from "lucide-react";
+import {
+  BookmarkX,
+  Globe,
+  Globe2,
+  Laptop2,
+  Trash2,
+  TrashIcon,
+} from "lucide-react";
 import Image from "next/image";
 
 async function Websites() {
@@ -48,11 +55,11 @@ async function Websites() {
         return (
           <li
             key={`${website.id}-${website.name}`}
-            className="border-b flex items-center py-2 gap-6 justify-between"
+            className="group border-b last:border-b-0 flex items-center py-2 gap-6 justify-between"
           >
             <div className="flex items-center gap-4">
-              <figure className="w-6 h-6 relative bg-black rounded flex items-center justify-center">
-                <Laptop2 className="w-4 text-background" />
+              <figure className="w-6 h-6 relative bg-black/10 border border-black/10 rounded flex items-center justify-center">
+                <Globe className="w-4 text" />
               </figure>
               <a href={website.url} className="text-sm">
                 <span>{website.name}</span>
@@ -65,9 +72,9 @@ async function Websites() {
             </div>
             <Button
               variant={"link"}
-              className="text-muted-foreground hover:text-destructive transition"
+              className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition"
             >
-              <Trash2 className="w-4 " />
+              <BookmarkX className="w-4 " />
             </Button>
           </li>
         );

@@ -8,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { User2 } from "lucide-react";
 
 async function Navigation() {
   return (
@@ -41,13 +42,14 @@ async function Navigation() {
             </Button>
           </li>
         </ul>
-
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
-              className="w-8 h-8 bg-black rounded-full"
+              className="w-8 h-8 rounded-full"
               area-aria-label="open user dropdown"
-            ></Button>
+            >
+              <User2 className="text-white w-6" />
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
