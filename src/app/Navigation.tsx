@@ -32,7 +32,7 @@ async function Navigation() {
         <ul role="menubar" className="flex items-center gap-2 grow">
           <li role="menuitem">
             <Button asChild variant={"ghost"}>
-              <Link href="/">Bookmarks</Link>
+              <Link href="/">Bookmark</Link>
             </Button>
           </li>
           <li role="menuitem">
