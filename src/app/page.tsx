@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="max-w-site px-site mx-auto">
       <div className="flex flex-row gap-3 w-full items-center">
-        hello world - again
+        hello world
         <Label className="relative grow">
           <Search className="absolute left-4 top-2 w-4" />
           <Input
