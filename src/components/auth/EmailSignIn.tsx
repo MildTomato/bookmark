@@ -1,6 +1,6 @@
 "use client";
 
-import { actionSignIn } from "@/app/signin/actions";
+import { actionSignIn } from "@/app/actions";
 import { useFormState, useFormStatus } from "react-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";

@@ -9,8 +9,38 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { User2 } from "lucide-react";
+import { actionSignOut } from "./actions";
+import { useFormState } from "react-dom";
+import { cookies } from "next/headers";
+import { createClient } from "@/lib/supabase/server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 async function Navigation() {
+  async function handleSignOut() {
+    "use server";
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+
+    try {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        throw error;
+      }
+    } catch (error: any) {
+      // console.log(error);
+      console.log(error.message);
+      return {
+        success: false,
+        message: error.message,
+        error: error.message,
+      };
+    }
+
+    redirect("/signin");
+  }
+
   return (
     <nav role="navigation" className="border-b">
       <div className="max-w-site mx-auto py-2 flex gap-3 items-center px-site">
@@ -58,6 +88,11 @@ async function Navigation() {
             <DropdownMenuItem>Billing</DropdownMenuItem>
             <DropdownMenuItem>Team</DropdownMenuItem>
             <DropdownMenuItem>Subscription</DropdownMenuItem>
+            {/* <form action={handleSignOut}>
+              <Button asChild type="submit">
+                <DropdownMenuItem>Sign out</DropdownMenuItem>
+              </Button>
+            </form> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

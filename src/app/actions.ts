@@ -33,7 +33,6 @@ export async function actionSignIn(prevState: any, formData: FormData) {
     }
 
     revalidatePath(`/`);
-    redirect("/");
   } catch (error: any) {
     // console.log(error);
     console.log(error.message);
@@ -47,4 +46,31 @@ export async function actionSignIn(prevState: any, formData: FormData) {
       },
     };
   }
+
+  redirect("/");
+}
+
+export async function actionSignOut(prevState: any, formData: FormData) {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  try {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      throw error;
+    }
+
+    revalidatePath(`/`);
+  } catch (error: any) {
+    // console.log(error);
+    console.log(error.message);
+    return {
+      success: false,
+      message: error.message,
+      error: error.message,
+    };
+  }
+
+  redirect("/signin");
 }
