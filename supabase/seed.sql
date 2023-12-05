@@ -2,11 +2,11 @@ insert into auth.users (instance_id, id, aud, role, email, encrypted_password, e
 values ('00000000-0000-0000-0000-000000000000', '5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'authenticated', 'authenticated', 'jon.summers.muir@gmail.com', '$2a$10$Iw/2HLcgRMoXLslFxZXFC.8bxpDZnDhrj.NVGZ20H4T/OLq2HzCcy', '2023-01-11 16:54:12.7991+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-01-11 16:54:12.801124+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-01-11 16:54:12.796822+00', '2023-01-11 16:54:12.80197+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL);
 
 -- Seed data for bookmarks
-INSERT INTO public.bookmarks (inserted_by, url, title, description)
+INSERT INTO public.bookmarks (inserted_by, url, title, description, favorite)
 VALUES
-  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://vercel.com', 'Vercel', 'Search engine'),
-  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://twitter.com', 'NextJS', 'Social media'),
-  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://facebook.com', 'Supabase', 'Social media'),
-  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://instagram.com', 'React', 'Social media'),
-  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://youtube.com', 'TailwindCSS', 'Video sharing'),
-  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://twitch.tv', 'ui.shadcn', 'Video streaming');
+  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://vercel.com', 'Vercel', 'Search engine', true),
+  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://twitter.com', 'NextJS', 'Social media', false),
+  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://facebook.com', 'Supabase', 'Social media', false),
+  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://instagram.com', 'React', 'Social media', true),
+  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://youtube.com', 'TailwindCSS', 'Video sharing', false),
+  ('5e040c00-ce26-4f2f-8413-e0985ec1f4b2', 'https://twitch.tv', 'ui.shadcn', 'Video streaming', false);

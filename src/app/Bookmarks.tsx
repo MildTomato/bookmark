@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
-import { BookmarkX, Globe } from "lucide-react";
+import { BookmarkX, Globe, Star } from "lucide-react";
 import { cookies } from "next/headers";
 
 async function Websites() {
@@ -39,6 +39,10 @@ async function Websites() {
                 <p className="text-sm truncate  text-muted-foreground">
                   {bookmark.description}
                 </p>
+
+                {bookmark.favorite && (
+                  <Star className="text-yellow-600" size={14} />
+                )}
               </div>
               <Button
                 variant={"link"}
