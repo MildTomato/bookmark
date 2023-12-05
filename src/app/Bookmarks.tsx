@@ -4,52 +4,13 @@ import { BookmarkX, Globe } from "lucide-react";
 import { cookies } from "next/headers";
 
 async function Websites() {
-  const websites = [
-    {
-      id: 1,
-      name: "Vercel",
-      url: "https://vercel.com",
-      description: "Search engine",
-    },
-    {
-      id: 2,
-      name: "NextJS",
-      url: "https://twitter.com",
-      description: "Social media",
-    },
-    {
-      id: 3,
-      name: "Supabase",
-      url: "https://facebook.com",
-      description: "Social media",
-    },
-    {
-      id: 4,
-      name: "React",
-      url: "https://instagram.com",
-      description: "Social media",
-    },
-    {
-      id: 5,
-      name: "TailwindCSS",
-      url: "https://youtube.com",
-      description: "Video sharing",
-    },
-    {
-      id: 6,
-      name: "ui.shadcn",
-      url: "https://twitch.tv",
-      description: "Video streaming",
-    },
-  ];
-
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
   const { data: bookmarks, error } = await supabase
     .from("bookmarks")
     .select("*")
-    .order("inserted_at", { ascending: false });
+    .order("inserted_by", { ascending: false });
 
   return (
     <div>
