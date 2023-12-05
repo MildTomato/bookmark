@@ -1,3 +1,5 @@
+-- init schema
+
 create type "public"."continents" as enum ('Africa', 'Antarctica', 'Asia', 'Europe', 'Oceania', 'North America', 'South America');
 
 create table "public"."bookmarks" (
