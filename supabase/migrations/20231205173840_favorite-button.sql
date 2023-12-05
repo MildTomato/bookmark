@@ -1,3 +1,5 @@
+-- add favorite column
+
 alter table "public"."bookmarks" add column "favorite" boolean not null default false;
 
 create policy "allow users to view their own bookmarks"
