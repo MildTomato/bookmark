@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,15 +7,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User2 } from "lucide-react";
-import { actionSignOut } from "./actions";
-import { useFormState } from "react-dom";
-import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
-import { revalidatePath } from "next/cache";
+import { User2 } from "lucide-react";
+import { cookies } from "next/headers";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 async function Navigation() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const { data } = await supabase.auth.getUser();
+
   async function handleSignOut() {
     "use server";
     const cookieStore = cookies();
@@ -72,6 +74,7 @@ async function Navigation() {
             </Button>
           </li>
         </ul>
+        <span className="text-sm text-foreground">{data.user?.email}</span>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
