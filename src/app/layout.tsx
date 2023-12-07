@@ -44,6 +44,7 @@ export default function RootLayout({
                 {process.env.NEXT_PUBLIC_SUPABASE_URL}
               </span>
             </div>
+            <hr />
             <div className="flex items-center gap-3">
               <span className="text-xs text-foreground/50">
                 NEXT_PUBLIC_SUPABASE_ANON_KEY:
