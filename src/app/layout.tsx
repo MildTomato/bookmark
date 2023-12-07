@@ -34,6 +34,26 @@ export default function RootLayout({
         <main role="main" className="py-12">
           {children}
         </main>
+        <footer role="contentinfo" className="py-12 max-w-site mx-auto px-site">
+          <pre className="flex flex-col gap-3 p-4 bg-muted border rounded-md">
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-foreground/50">
+                NEXT_PUBLIC_SUPABASE_URL:
+              </span>
+              <span className="truncate text-xs font-mono">
+                {process.env.NEXT_PUBLIC_SUPABASE_URL}
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-foreground/50">
+                NEXT_PUBLIC_SUPABASE_ANON_KEY:
+              </span>
+              <span className="truncate text-xs font-mono">
+                {process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}
+              </span>
+            </div>
+          </pre>
+        </footer>
       </body>
     </html>
   );
