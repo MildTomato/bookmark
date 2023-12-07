@@ -1,3 +1,11 @@
+create policy "Users can delete their own bookmarks"
+on "public"."bookmarks"
+as permissive
+for delete
+to authenticated
+using ((auth.uid() = inserted_by));
+
+
 create policy "Users can insert new bookmarks"
 on "public"."bookmarks"
 as permissive
