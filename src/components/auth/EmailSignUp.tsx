@@ -1,13 +1,13 @@
 "use client";
 
-import { actionSignIn } from "@/app/actions";
+import { actionSignUp } from "@/app/actions";
 import { useFormState, useFormStatus } from "react-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Loader2Icon } from "lucide-react";
 
-async function SignInForm() {
+async function SignUpForm() {
   const initialState = {
     message: undefined,
     success: undefined,
@@ -18,15 +18,19 @@ async function SignInForm() {
     },
   };
 
-  const [state, formAction] = useFormState(actionSignIn, initialState);
+  const [state, formAction] = useFormState(actionSignUp, initialState);
 
   const SubmitButton = () => {
     const { pending } = useFormStatus();
 
     return (
-      <Button disabled={pending} className="mt-2" type="submit">
+      <Button
+        disabled={pending}
+        className="mt-2 flex gap-2 items-center"
+        type="submit"
+      >
         {pending && <Loader2Icon className="animate-spin" />}
-        Sign in
+        Sign up
       </Button>
     );
   };
@@ -66,4 +70,4 @@ async function SignInForm() {
   );
 }
 
-export { SignInForm };
+export { SignUpForm };

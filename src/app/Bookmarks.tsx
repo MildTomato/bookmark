@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { BookmarkX, Globe } from "lucide-react";
 import { cookies } from "next/headers";
+import { BookmarkDelete } from "./BookmarkDelete";
 
 async function Websites() {
   const cookieStore = cookies();
@@ -40,12 +41,7 @@ async function Websites() {
                   {bookmark.description}
                 </p>
               </div>
-              <Button
-                variant={"link"}
-                className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition"
-              >
-                <BookmarkX className="w-4 " />
-              </Button>
+              <BookmarkDelete bookmark={bookmark} />
             </li>
           );
         })

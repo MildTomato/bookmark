@@ -24,7 +24,11 @@ async function SignInForm() {
     const { pending } = useFormStatus();
 
     return (
-      <Button disabled={pending} className="mt-2" type="submit">
+      <Button
+        disabled={pending}
+        className="mt-2 flex gap-2 items-center"
+        type="submit"
+      >
         {pending && <Loader2Icon className="animate-spin" />}
         Sign in
       </Button>

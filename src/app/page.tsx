@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import { Websites } from "./Bookmarks";
+import { BookmarkInsert } from "./BookmarkInsert";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
           />
         </Label>
         <div className="h-[2rem] w-px bg-border"></div>
-        <Button variant={"outline"}>New Bookmark</Button>
+        <BookmarkInsert />
       </div>
       <div className="py-4">
         <Websites />

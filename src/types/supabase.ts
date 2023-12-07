@@ -39,7 +39,7 @@ export interface Database {
           created_at: string
           description: string | null
           id: number
-          insert_by: string
+          inserted_by: string
           title: string | null
           url: string
         }
@@ -47,7 +47,7 @@ export interface Database {
           created_at?: string
           description?: string | null
           id?: number
-          insert_by: string
+          inserted_by: string
           title?: string | null
           url: string
         }
@@ -55,14 +55,14 @@ export interface Database {
           created_at?: string
           description?: string | null
           id?: number
-          insert_by?: string
+          inserted_by?: string
           title?: string | null
           url?: string
         }
         Relationships: [
           {
-            foreignKeyName: "bookmarks_insert_by_fkey"
-            columns: ["insert_by"]
+            foreignKeyName: "bookmarks_inserted_by_fkey"
+            columns: ["inserted_by"]
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
