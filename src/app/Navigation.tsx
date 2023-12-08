@@ -8,8 +8,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/lib/supabase/server";
-import { User2 } from "lucide-react";
+import { User, User2 } from "lucide-react";
 import { cookies } from "next/headers";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -77,25 +78,52 @@ async function Navigation() {
         <span className="text-sm text-foreground">{data.user?.email}</span>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              className="w-8 h-8 rounded-full"
-              area-aria-label="open user dropdown"
+            <button
+              className="bg-muted border w-7 h-7 flex items-center justify-center rounded-full"
+              type="button"
             >
-              <User2 className="text-white w-6" />
-            </Button>
+              {data.user ? (
+                <Image
+                  width={32}
+                  height={32}
+                  src="https://avatars.githubusercontent.com/u/13792200?v=4"
+                  className="border rounded-full"
+                  alt="profile image"
+                />
+              ) : (
+                <User
+                  className="text-secondary-foreground/50 w-4"
+                  strokeWidth={1}
+                />
+              )}
+            </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Team</DropdownMenuItem>
-            <DropdownMenuItem>Subscription</DropdownMenuItem>
-            {/* <form action={handleSignOut}>
-              <Button asChild type="submit">
-                <DropdownMenuItem>Sign out</DropdownMenuItem>
-              </Button>
-            </form> */}
+          <DropdownMenuContent align="end" className="w-40">
+            {!data.user && (
+              <>
+                <DropdownMenuItem asChild>
+                  <Link href="/signin">Sign in</Link>
+                </DropdownMenuItem>
+              </>
+            )}
+
+            {data.user && (
+              <form action={handleSignOut}>
+                <DropdownMenuItem asChild>
+                  <button type="submit" className="w-full">
+                    Sign out
+                  </button>
+                </DropdownMenuItem>
+              </form>
+            )}
+            {!data.user && (
+              <>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/signup">Signup</Link>
+                </DropdownMenuItem>
+              </>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
