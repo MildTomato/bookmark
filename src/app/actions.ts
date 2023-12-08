@@ -233,3 +233,55 @@ export async function actionDeleteBookmark(prevState: any, formData: FormData) {
     };
   }
 }
+
+export async function favoriteAction(prevState: any, formData: FormData) {
+  const schema = z.object({
+    id: z.string(),
+    favorite: z.boolean(),
+  });
+
+  try {
+    const getFavorite = formData.get("favorite");
+    const favoriteBoolean =
+      getFavorite !== undefined && getFavorite === "true" ? true : false;
+
+    const data = schema.parse({
+      id: formData.get("id"),
+      favorite: favoriteBoolean,
+    });
+
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+
+    console.log("data.favorite", data.favorite);
+    console.log("data.id", data.id);
+
+    const newFavorite = !data.favorite;
+
+    // console.log("newFavorite", newFavorite);
+
+    const { data: favoriteData, error } = await supabase
+      .from("bookmarks")
+      .update({ favorite: newFavorite })
+      .eq("id", data.id);
+
+    if (error) throw error;
+
+    console.log("favoriteData", favoriteData);
+
+    revalidatePath("/");
+
+    return {
+      success: true,
+      message: "Favorite updated to " + newFavorite,
+      data: {
+        favorite: newFavorite,
+      },
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message,
+    };
+  }
+}
