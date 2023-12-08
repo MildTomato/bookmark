@@ -61,7 +61,7 @@ async function Websites() {
                   <Globe className="w-4 text" strokeWidth={1} />
                 </figure>
 
-                {/* <Favorite bookmark={{ ...bookmark }} /> */}
+                <Favorite bookmark={{ ...bookmark }} />
 
                 <a href={bookmark.url} className="font-mono text-sm">
                   <span>{bookmark.url}</span>
