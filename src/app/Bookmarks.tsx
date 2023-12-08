@@ -1,19 +1,51 @@
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
-import { BookmarkX, Globe } from "lucide-react";
+import { Globe, Search } from "lucide-react";
 import { cookies } from "next/headers";
+import { BookmarkDelete } from "./BookmarkDelete";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { BookmarkInsert } from "./BookmarkInsert";
 
 async function Websites() {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
+
+  const { data: userData } = await supabase.auth.getUser();
 
   const { data: bookmarks, error } = await supabase
     .from("bookmarks")
     .select("*")
     .order("inserted_by", { ascending: false });
 
+  if (!userData.user) {
+    return (
+      <div className="flex flex-col gap-3 items-center justify-center border border-dashed py-32 rounded-md">
+        <h1 className="text-sm">You are not signed in</h1>
+        <a href="/signin">
+          <Button type="button" size={"sm"}>
+            Sign in
+          </Button>
+        </a>
+      </div>
+    );
+  }
   return (
     <div>
+      <div className="flex flex-row gap-3 w-full items-center">
+        <Label className="relative grow">
+          <Search className="absolute left-4 top-2 w-4" />
+          <Input
+            name="url"
+            placeholder="Search for a website"
+            type="url"
+            className="pl-12"
+          />
+        </Label>
+        <div className="h-[2rem] w-px bg-border"></div>
+        <BookmarkInsert />
+      </div>
+      <div className="py-4"></div>
       {!bookmarks || bookmarks?.length === 0 ? (
         <div> No bookmarks yet </div>
       ) : (
@@ -40,12 +72,7 @@ async function Websites() {
                   {bookmark.description}
                 </p>
               </div>
-              <Button
-                variant={"link"}
-                className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition"
-              >
-                <BookmarkX className="w-4 " />
-              </Button>
+              <BookmarkDelete bookmark={bookmark} />
             </li>
           );
         })
