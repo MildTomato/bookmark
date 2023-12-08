@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { createClient } from "@/lib/supabase/server";
 import { Globe, Search } from "lucide-react";
 import { cookies } from "next/headers";
 import { BookmarkDelete } from "./BookmarkDelete";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { BookmarkInsert } from "./BookmarkInsert";
+import { Favorite } from "./Favorite";
 
 async function Websites() {
   const cookieStore = cookies();
@@ -16,7 +17,7 @@ async function Websites() {
   const { data: bookmarks, error } = await supabase
     .from("bookmarks")
     .select("*")
-    .order("inserted_by", { ascending: false });
+    .order("id", { ascending: true });
 
   if (!userData.user) {
     return (
@@ -59,6 +60,8 @@ async function Websites() {
                 <figure className="w-6 h-6 relative bg-black/[2%] group-hover:bg-black/[5%] border border-black/10 rounded-lg flex items-center justify-center">
                   <Globe className="w-4 text" strokeWidth={1} />
                 </figure>
+
+                <Favorite bookmark={{ ...bookmark }} />
 
                 <a href={bookmark.url} className="font-mono text-sm">
                   <span>{bookmark.url}</span>

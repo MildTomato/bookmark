@@ -38,6 +38,7 @@ export interface Database {
         Row: {
           created_at: string
           description: string | null
+          favorite: boolean
           id: number
           inserted_by: string
           title: string | null
@@ -46,6 +47,7 @@ export interface Database {
         Insert: {
           created_at?: string
           description?: string | null
+          favorite?: boolean
           id?: number
           inserted_by: string
           title?: string | null
@@ -54,6 +56,7 @@ export interface Database {
         Update: {
           created_at?: string
           description?: string | null
+          favorite?: boolean
           id?: number
           inserted_by?: string
           title?: string | null
